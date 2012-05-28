@@ -7,7 +7,7 @@ module Rack
     def call(env)
       status, headers, body = @app.call(env)
 
-      headers['Cache-Control'] = "no-transform; #{ headers['Cache-Control'] }"
+      headers['Cache-Control'] = ['no-transform', headers['Cache-Control']].compact.join(',')
 
       [status, headers, body]
     end
