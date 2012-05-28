@@ -1,5 +1,9 @@
 # DontMessWithMyJs
 
+Adds `Cache-Control: no-transform;` to your responsed (via rack middleware) so that
+[bytemobile's](http://www.bytemobile.com/) [bmi.js](https://google.com/search?q=bmi.js)
+doen't bugger your pages assets.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -16,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Rails
+
+**app/config/application.rb**
+
+    config.middleware.use(Rack::DontMessWithMyJs)
 
 ## Contributing
 

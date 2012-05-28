@@ -7,7 +7,7 @@ module Rack
     def call(env)
       status, headers, body = @app.call(env)
 
-      headers['Cache-Control'] = "no-transform; #{ env['Cache-Control'] }"
+      headers['Cache-Control'] = "no-transform; #{ headers['Cache-Control'] }"
 
       [status, headers, body]
     end
