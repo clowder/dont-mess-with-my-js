@@ -1,8 +1,8 @@
 # DontMessWithMyJs
 
-Adds `Cache-Control: no-transform;` to your responsed (via rack middleware) so that
+Adds `Cache-Control: no-transform` to your responses (via rack middleware) so that
 [bytemobile's](http://www.bytemobile.com/) [bmi.js](https://google.com/search?q=bmi.js)
-doen't bugger your pages assets.
+doen't bugger your page's assets.
 
 ## Installation
 
@@ -22,9 +22,13 @@ Or install it yourself as:
 
 ### Rails
 
-**app/config/application.rb**
+*app/config/application.rb*
 
-    config.middleware.use(Rack::DontMessWithMyJs)
+    config.middleware.insert_before ActionDispatch::Static, Rack::DontMessWithMyJs
+
+*app/config/production.rb*
+
+    config.serve_static_assets = true
 
 ## Contributing
 
@@ -33,3 +37,7 @@ Or install it yourself as:
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Addendum
+
+This is a parody, you should probably just set `config.static_cache_control` if your using Rails.
